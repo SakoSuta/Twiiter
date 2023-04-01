@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/timeline', function () {
+Route::get('/tweets', function () {
     return view('timeline');
 })->middleware(['auth', 'verified'])->name('timeline');
 
