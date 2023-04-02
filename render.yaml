@@ -33,7 +33,7 @@ services:
         value: null
 
 databases:
-  - name: laravel
+  - name: twiiter
     engine: postgres
     version: "15"
     username: laravel_render_ophf_user
