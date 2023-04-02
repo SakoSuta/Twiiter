@@ -15,7 +15,7 @@ class TimelineController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $tweets = Tweets::orderBy('created_at', 'desc')->get();
+        $tweets = Tweets::orderBy('created_at', 'desc')->paginate(10);
 
         return view('timeline', compact('tweets', 'user'));
     }
@@ -38,14 +38,6 @@ class TimelineController extends Controller
         $tweet->save();
 
         return redirect()->route('timeline')->with('success', 'Your Tweet is now publish in the World 🌍');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

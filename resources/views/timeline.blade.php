@@ -34,6 +34,7 @@
                                     @endif
                                 </div>
                             @endforeach
+                            {{ $tweets->links() }}
                         @else
                         <div>
                             <p>Be the first to tweet in the world 😉👆!</p>
