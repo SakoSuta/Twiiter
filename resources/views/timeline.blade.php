@@ -28,7 +28,7 @@
                                     <div class="flex my-2">
                                         <h2 class="font-semibold">{{ $tweet->user->username }}</h2>&nbsp;<span class="text-slate-400">{{ $tweet->created_at->diffForHumans() }}</span>
                                     </div>
-                                    <h3 class="my-2 mb-4">{{ $tweet->text }}</h3>
+                                    <h3 class="my-4 mb-6">{{ $tweet->text }}</h3>
                                     <a href="/delete/{{ $tweet->id }}" class="p-2 px-4 bg-red-700 rounded-lg">Delete</a>
                                 </div>
                             @endforeach
