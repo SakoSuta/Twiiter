@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Tweets;
 
 class TimelineController extends Controller
 {
@@ -17,9 +19,21 @@ class TimelineController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function CreateTweet(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $data = $request->validate([
+            'text' => 'required|max:180',
+        ]);
+
+        $tweet = new Tweets();
+        $tweet->text = $data['text'];
+        $tweet->user_id = $user->id;
+
+        $tweet->save();
+
+        return redirect()->route('timeline')->with('success', 'Your Tweet is now publish in the World 🌍');
     }
 
     /**
