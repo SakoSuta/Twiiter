@@ -28,6 +28,7 @@ Route::get('/tweets', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/users/{username}/tweets', [TimelineController::class, 'ShowTweets'])->name('tweets.users');
+    Route::get('/delete/{id}', [TimelineController::class, 'DeleteTweets'])->name('delete.tweets');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
