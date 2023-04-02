@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tweets;
+use App\Models\User;
 
 class TimelineController extends Controller
 {
@@ -13,9 +14,10 @@ class TimelineController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $tweets = Tweets::orderBy('created_at', 'desc')->get();
 
-        return view('timeline', compact('tweets'));
+        return view('timeline', compact('tweets', 'user'));
     }
 
     /**
@@ -49,25 +51,13 @@ class TimelineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function ShowTweets($username)
     {
-        //
-    }
+        $auth = Auth::user();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        $user = User::where('username', $username)->firstOrFail();
+        $tweets = Tweets::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('ShowTweets', compact('user', 'tweets', 'auth'));
     }
 
     /**
@@ -79,6 +69,6 @@ class TimelineController extends Controller
 
         $tweet->delete();
 
-        return redirect()->route('timeline')->with('success', 'Your Tweet has been successfully deleted.');
+        return back()->with('success', 'Your Tweet has been successfully deleted.');
     }
 }
