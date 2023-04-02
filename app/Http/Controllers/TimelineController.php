@@ -73,8 +73,12 @@ class TimelineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function DeleteTweets($id)
     {
-        //
+        $tweet = Tweets::where('id', $id)->firstOrFail();
+
+        $tweet->delete();
+
+        return redirect()->route('timeline')->with('success', 'Your Tweet has been successfully deleted.');
     }
 }
