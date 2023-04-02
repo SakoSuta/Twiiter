@@ -13,7 +13,9 @@ class TimelineController extends Controller
      */
     public function index()
     {
-        //
+        $tweets = Tweets::orderBy('created_at', 'desc')->get();
+
+        return view('timeline', compact('tweets'));
     }
 
     /**

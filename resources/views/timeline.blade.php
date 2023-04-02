@@ -22,13 +22,21 @@
                     </form>
                     <div>
                         <h1 class="my-4 font-bold text-xl">All tweets of the world :</h1>
-                        <div class="my-9">
-                            <div class="flex my-2">
-                                <h2 class="font-semibold">Username</h2>&nbsp;<span class="text-slate-400">Time ago</span>
-                            </div>
-                            <h3 class="my-2 mb-4">Contenu tweet</h3>
-                            <a href="/delete/{id}" class="p-2 px-4 bg-red-700 rounded-lg">Delete</a>
+                        @if($tweets->count() > 0)
+                            @foreach($tweets as $tweet)
+                                <div class="my-9">
+                                    <div class="flex my-2">
+                                        <h2 class="font-semibold">{{ $tweet->user->username }}</h2>&nbsp;<span class="text-slate-400">{{ $tweet->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <h3 class="my-2 mb-4">{{ $tweet->text }}</h3>
+                                    <a href="/delete/{{ $tweet->id }}" class="p-2 px-4 bg-red-700 rounded-lg">Delete</a>
+                                </div>
+                            @endforeach
+                        @else
+                        <div>
+                            <p>Be the first to tweet in the world 😉👆!</p>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

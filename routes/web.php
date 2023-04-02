@@ -28,12 +28,16 @@ Route::get('/tweets', function () {
 })->middleware(['auth', 'verified'])->name('timeline');
 
 Route::middleware('auth')->group(function () {
-    Route::post('/tweets/create', [TimelineController::class, 'CreateTweet'])->name('create.tweets');
-    Route::get('/users/{username}/tweets', [TimelineController::class, 'ShowTweets'])->name('tweets.users');
-    Route::get('/delete/{id}', [TimelineController::class, 'DeleteTweets'])->name('delete.tweets');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/tweets', [TimelineController::class, 'index'])->name('timeline');
+    Route::post('/tweets/create', [TimelineController::class, 'CreateTweet'])->name('create.tweets');
+    Route::get('/users/{username}/tweets', [TimelineController::class, 'ShowTweets'])->name('tweets.users');
+    Route::get('/delete/{id}', [TimelineController::class, 'DeleteTweets'])->name('delete.tweets');
 });
 
 require __DIR__.'/auth.php';
