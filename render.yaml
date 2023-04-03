@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: laravel-breeze-app
+    name: twiiter
     env: docker
-    buildCommand: "docker build -t laravel-breeze-app ."
-    startCommand: "docker run -p 8080:80 --log-driver json-file laravel-breeze-app"
+    buildCommand: "docker build -t twiiter ."
+    startCommand: "docker run -p 8080:80 --log-driver json-file twiiter"
     envVars:
       - key: APP_ENV
         value: production
@@ -25,7 +25,7 @@ services:
         value: sakosuta
       - key: DB_PASSWORD
         value: lKqrZRJEqkFAliHOJCxlJu3v7JlFg1R6
-        
+
 
 databases:
   - name: twiiter
