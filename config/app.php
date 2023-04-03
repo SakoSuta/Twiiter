@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'twiiter'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:Ze+cwZzvHuWKXHkkWaIIJs8YNRU7FVHw6sTtopoH168='),
 
     'cipher' => 'AES-256-CBC',
 
