@@ -32,31 +32,6 @@ services:
       - key: LOG_DEPRECATIONS_CHANNEL
         value: null
 
-  - type: script
-    name: laravel-breeze-migrations
-    env: docker
-    buildCommand: "docker build -t laravel-breeze-migrations ."
-    startCommand: "docker run laravel-breeze-migrations php artisan migrate --force"
-    envVars:
-      - key: APP_ENV
-        value: production
-      - key: APP_KEY
-        value: base64:Ze+cwZzvHuWKXHkkWaIIJs8YNRU7FVHw6sTtopoH168=
-      - key: APP_URL
-        value: https://twiiter-vpzs.onrender.com
-      - key: DB_CONNECTION
-        value: pgsql
-      - key: DB_HOST
-        value: dpg-cgl1fiu4dad69r5eqelg-a.oregon-postgres.render.com
-      - key: DB_PORT
-        value: 5432
-      - key: DB_DATABASE
-        value: twiiter
-      - key: DB_USERNAME
-        value: sakosuta
-      - key: DB_PASSWORD
-        value: lKqrZRJEqkFAliHOJCxlJu3v7JlFg1R6
-
 
 databases:
   - name: twiiter
