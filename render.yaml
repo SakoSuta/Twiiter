@@ -25,13 +25,7 @@ services:
         value: sakosuta
       - key: DB_PASSWORD
         value: lKqrZRJEqkFAliHOJCxlJu3v7JlFg1R6
-      - key: LOG_CHANNEL
-        value: stack
-      - key: LOG_LEVEL
-        value: debug
-      - key: LOG_DEPRECATIONS_CHANNEL
-        value: null
-
+        
 
 databases:
   - name: twiiter
